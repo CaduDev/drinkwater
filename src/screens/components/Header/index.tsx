@@ -23,7 +23,6 @@ export function Header({ ml, percent }: Props) {
           beber água diariamente é fundamental para o bom funcionamento do nosso organismo.
         </Text>
       </View>
-
       <View style={styles.cups}>
         {
           cups.map(value => (
@@ -31,7 +30,7 @@ export function Header({ ml, percent }: Props) {
               key={String(value)}
               name="cup"
               size={32}
-              color={percent > value ? theme.colors.blue90 : theme.colors.gray80}
+              color={percent > value-1 ? theme.colors.blue90 : theme.colors.gray80}
             />
           ))
         }

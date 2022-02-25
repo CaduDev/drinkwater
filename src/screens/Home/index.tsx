@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ToolbarAndroid, TouchableOpacity, View, Dimensions } from 'react-native';
 import { Svg, Circle, Path } from 'react-native-svg';
 import Animated, { 
@@ -23,10 +23,20 @@ import { Header } from '../components/Header';
 const { width } = Dimensions.get('screen');
 
 export function Home() {
-  const [percentage, setPercentage] = useState(0)
+  const [percentage, setPercentage] = useState(0);
+  const [disabledButton, setDisabledButton] = useState(false);
+
   const heightAnimated = useSharedValue(100);
   const waveAnimated = useSharedValue(5); 
   const buttonBorderAnimated = useSharedValue(0);
+
+  useEffect(() => {
+    if(percentage < 100) {
+      setTimeout(() => {
+        setDisabledButton(false)
+      }, 1001)
+    }
+  }, [percentage]);
 
   const buttonProps = useAnimatedProps(() => {
     return {
@@ -86,6 +96,9 @@ export function Home() {
   })
 
   function handleDrink() {
+    setPercentage(Math.trunc(heightAnimated.value * .1))
+    setDisabledButton(true);
+
     buttonBorderAnimated.value = 0;
     waveAnimated.value = 5;
 
@@ -106,8 +119,6 @@ export function Home() {
       duration: 1000,
       easing: Easing.ease
     });
-
-    setPercentage(Math.trunc(heightAnimated.value * .1))
   }
 
   return (
@@ -131,6 +142,7 @@ export function Home() {
         <TouchableOpacity 
           style={styles.button}
           onPress={handleDrink}
+          disabled={disabledButton}
         >
           <Svg width={120} height={120}>
             <AnimatedCircle animatedProps={buttonProps} />
