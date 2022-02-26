@@ -1,5 +1,5 @@
 # Drinkwater
-### Frontend in React-Native. Application developed for the study of `svg animated`
+### Frontend in React-Native. Application developed for the study of `animated svg` following the instructions of instructor Rodrigo Gonçalvez of the teaching platform `Rocketseat`
 ##
 ### Steps to run the applications
 
