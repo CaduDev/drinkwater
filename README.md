@@ -1,4 +1,4 @@
-# Opflix
+# Drinkwater
 ### Frontend in React-Native. Application developed for the study of `svg animated`
 ##
 ### Steps to run the applications
