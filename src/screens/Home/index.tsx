@@ -98,6 +98,7 @@ export function Home() {
   function handleDrink() {
     setPercentage(Math.trunc(heightAnimated.value * .1))
     setDisabledButton(true);
+    console.log('aqui', heightAnimated.value)
 
     buttonBorderAnimated.value = 0;
     waveAnimated.value = 5;
@@ -123,7 +124,7 @@ export function Home() {
 
   return (
     <View style={styles.container}>
-      <Header ml={percentage===0?0:heightAnimated.value} percent={percentage} />
+      <Header ml={percentage*10} percent={percentage} />
 
       <AnimatedSvg animatedProps={svgContainerProps}>
         <AnimatedPath 
